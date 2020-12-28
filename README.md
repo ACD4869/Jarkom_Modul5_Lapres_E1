@@ -26,9 +26,9 @@ xterm -T SIDOARJO -e linux ubd0=SIDOARJO,jarkom umid=SIDOARJO eth0=daemon,,,swit
 ```
 
 ## B. Subnetting VLSM
-[](img/1.png)
+![](img/1.png)
 
-[](img/2.png)
+![](img/2.png)
 
 Pada file `/etc/network/interfaces`
 
@@ -178,7 +178,7 @@ Ditambah perintah di SURABAYA
 ```
 iptables -t nat -A POSTROUTING -s 192.168.0.0/16 -o eth0 -j SNAT --to-source 10.151.70.10 
 ```
-[](img/3.png)
+![](img/3.png)
 ## 2. Drop semua akses SSH dari luar Topologi pada DHCP dan DNS SERVER
 Ditambah perintah di SURABAYA
 ```
@@ -186,7 +186,7 @@ Ditambah perintah di SURABAYA
 iptables -A FORWARD -d 10.151.71.16/29 -i eth0 -p tcp --dport 22 -j LOG --log-prefix "FORWARD:DROPPED: "
 iptables -A FORWARD -d 10.151.71.16/29 -i eth0 -p tcp --dport 22 -j DROP 
 ```
-[](img/4.png)
+![](img/4.png)
 ## 3. DHCP dan DNS server hanya boleh menerima maksimal 3 koneksi ICMP secara bersamaan
 Ditambah perintah di MALANG dan MOJOKERTO
 ```
@@ -194,7 +194,7 @@ Ditambah perintah di MALANG dan MOJOKERTO
 iptables -A INPUT -p icmp -m connlimit --connlimit-above 3 --connlimit-mask 0 -j LOG --log-prefix "INPUT:DROPPED: "
 iptables -A INPUT -p icmp -m connlimit --connlimit-above 3 --connlimit-mask 0 -j DROP 
 ```
-[](img/5.png)
+![](img/5.png)
 ## 4. SIDOARJO hanya diperbolehkan pukul 07.00-17.00 hari Senin-Jumat
 Ditambah perintah di SIDOARJO
 ```
@@ -225,9 +225,10 @@ iptables -t nat -A POSTROUTING -p tcp -d 192.168.5.2 --dport 80 -j SNAT --to-sou
 iptables -t nat -A POSTROUTING -p tcp -d 192.168.5.3 --dport 80 -j SNAT --to-source 10.151.71.18:80
 
 ```
-[](img/6.png)
+![](img/6.png)
 
-[](img/7.png)
+![](img/7.png)
+
 ## 7. Log semua paket yang didrop
 ```
 #SURABAYA
