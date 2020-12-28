@@ -225,9 +225,9 @@ iptables -t nat -A POSTROUTING -p tcp -d 192.168.5.2 --dport 80 -j SNAT --to-sou
 iptables -t nat -A POSTROUTING -p tcp -d 192.168.5.3 --dport 80 -j SNAT --to-source 10.151.71.18:80
 
 ```
-![](img/6.png)
+![](img/6.jpg)
 
-![](img/7.png)
+![](img/7.jpg)
 
 ## 7. Log semua paket yang didrop
 ```
